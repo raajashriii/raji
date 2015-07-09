@@ -1,0 +1,107 @@
+<?php  
+session_start();  
+  
+if(!$_SESSION['username'])  
+{  
+   
+   header("Location:raji.html");
+	
+}  
+  
+?>  
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="raji.css">
+<script>
+function search()
+{
+var x=document.getElementById("pillayar").value;
+if(x=="mumbai")
+window.location="mumbai.html";
+else if(x=="chennai")
+window.location="chennai.html";
+else if(x=="delhi")
+window.location="delhi.html";
+else if(x=="calcutta")
+window.location="calcutta.html";
+else if(x=="goa")
+window.location="goa.html";
+else
+{
+var xhr;
+if (window.XMLHttpRequest) xhr = new XMLHttpRequest(); 		
+else xhr = new ActiveXObject("Microsoft.XMLHTTP"); 
+
+xhr.open('GET','ajax.txt', false);
+xhr.onreadystatechange = function () {
+	if (xhr.readyState===4 && xhr.status===200) {
+		var div = document.getElementById('main');
+		div.innerHTML = xhr.responseText;
+	}
+}
+xhr.send();
+}
+}
+function ask(){
+window.alert("Your Query will be Addressed soon.");
+}
+</script>
+</head>
+<body>
+<div class="canvas">
+<div class="head">
+<img src="logo.png" style="margin-left:10px;margin-top:0px;height:150px;width:350px;">
+<div class="pa"><a href="logout.php">Logout</a></div>
+<div class="menu">
+	<ul>
+		<li class="item"><a href="conc.html">Contact</a></li>
+		<li class="item"><a href="ask.html">Ask Us</a></li>
+		<li class="item"><a href="blog.html">Best Blogs</a></li>
+		<li class="item"><a href="must_visit.html">Must Visit</a></li>
+		<li class="item"><a href="home.html">Home</a></li>
+	</ul>	
+</div>
+<div class="side">
+           <ul>
+				<li class="it"><a href="mumbai.html">Mumbai</a></li>
+				     _____________
+				<li class="it"><a href="calcutta.html">Calcutta</a></li>
+				     _____________
+				<li class="it"><a href="chennai.html">Chennai</a></li>
+				     ______________
+				<li class="it"><a href="delhi.html">Delhi</a></li>
+				     ______________
+				<li class="it"><a href="goa.html">Goa</a></li>
+				     _______________
+			</ul>
+</div>
+</div>
+<div class="ser">
+<table cellpadding="0px" cellspacing="0px">
+	<tr>
+	<td style="font-family:verdana">Search:</td>
+	<td  style="border-style:none;border-color:#CCCCCC;border-width:1px;">
+	<input type="text"  id="pillayar" style="width:200px; height:25px; padding:0px 3px; position:relative;border-radius:20px;">
+	</td>
+	<td style="border-style:none;border-color:#CCCCCC;border-width:0px;"> 
+	<input type="submit" value="" onclick="search()" style="border-style: none; background:url('search1.png') no-repeat; width: 24px; height: 22px;padding:0px;margin:0px;position:relative">
+	</td>
+	</tr>
+	</table>
+	</div>
+	<div class="main" id="main">
+	<form method="POST" id="testformid" action="ask.php">
+	Email id:
+	<input type="text" name="email">
+	<br><br>
+	your Queries:<BR>
+	<input type="hidden" name="comment" value="How to access marina?">
+    <TEXTAREA NAME="a" COLS=40 ROWS=6 form="testformid"></TEXTAREA>
+    <input type="submit" onclick="ask()"/>
+    </form>
+    <br>
+	</div>
+</div>
+</body>
+</html>
