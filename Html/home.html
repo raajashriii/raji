@@ -1,0 +1,111 @@
+<?php  
+session_start();  
+  
+if(!$_SESSION['username'])  
+{  
+   
+   header("Location:raji.html");
+	
+}  
+  
+?>  
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="raji.css">
+<script>
+function search()
+{
+var x=document.getElementById("pillayar").value;
+if(x=="mumbai")
+window.location="mumbai.html";
+else if(x=="chennai")
+window.location="chennai.html";
+else if(x=="delhi")
+window.location="delhi.html";
+else if(x=="calcutta")
+window.location="calcutta.html";
+else if(x=="goa")
+window.location="goa.html";
+else
+{
+var xhr;
+if (window.XMLHttpRequest) xhr = new XMLHttpRequest(); 		
+else xhr = new ActiveXObject("Microsoft.XMLHTTP"); 
+xhr.open('GET','ajax.txt', false);
+xhr.onreadystatechange = function () {
+	if (xhr.readyState===4 && xhr.status===200) {
+		var div = document.getElementById('main');
+		div.innerHTML = xhr.responseText;
+	}
+}
+xhr.send();
+}
+}
+</script>
+</head>
+<body>
+<div class="canvas">
+<div class="head">
+<img src="logo.png" style="margin-left:10px;margin-top:0px;height:150px;width:350px;">
+<div class="pa"><a href="logout.php">Logout</a></div>
+<div class="menu">
+	<ul>
+		<li class="item"><a href="conc.html">Contact</a></li>
+		<li class="item"><a href="ask.html">Ask Us</a></li>
+		<li class="item"><a href="blog.html">Best Blogs</a></li>
+		<li class="item"><a href="must_visit.html">Must Visit</a></li>
+		<li class="item"><a href="home.html">Home</a></li>
+	</ul>	
+</div>
+<div class="side">
+           <ul>
+				<li class="it"><a href="mumbai.html">Mumbai</a></li>
+				     _____________
+				<li class="it"><a href="calcutta.html">Calcutta</a></li>
+				     _____________
+				<li class="it"><a href="chennai.html">Chennai</a></li>
+				     ______________
+				<li class="it"><a href="delhi.html">Delhi</a></li>
+				     ______________
+				<li class="it"><a href="goa.html">Goa</a></li>
+				     _______________
+			</ul>
+</div>
+</div>
+<div class="ser">
+<table cellpadding="0px" cellspacing="0px">
+	<tr>
+	<td style="font-family:verdana">Search:</td>
+	<td  style="border-style:none;border-color:#CCCCCC;border-width:1px;">
+	<input type="text"  id="pillayar" style="width:200px; height:25px; padding:0px 3px; position:relative;border-radius:20px;">
+	</td>
+	<td style="border-style:none;border-color:#CCCCCC;border-width:0px;"> 
+	<input type="submit" value="" onclick="search()" style="border-style: none; background:url('search1.png') no-repeat; width: 24px; height: 22px;padding:0px;margin:0px;position:relative">
+	</td>
+	</tr>
+	</table>
+	</div>
+	<div class="main" id="main">
+	<p style="font-size:50px"><b>About:</b><p>
+	
+	<p>
+		<p>    </p>In today’s accelerated world, it’s important to take time to breathe. 
+	Literally, of course, but also to breathe in the sights, scents and sounds of nature:to watch a sunset, walk 
+	through a park or get away from the city lights so you can really see the stars shine.
+	Such examples are easy ways of connecting with nature.
+	</p>
+	<p>
+		Also, by keeping a journal and practicing a few simple techniques, you can build even stronger connections.
+	Not only will you observe unique events, you’ll feel more alive — awake and attuned to the world around you. 
+	</p>
+	<p>
+		It will refresh and energize your body and mind That we are drawn to and can be inspired by the natural world should come as no surprise.
+	Because human beings evolved in nature, we have an “instinctive love of living things,” according to Edward O.Wilson, 
+	the renowned biologist known as “the father of biodiversity".
+	</p>
+	
+	</div>
+</div>
+</body>
+</html>
